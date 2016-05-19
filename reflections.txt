@@ -1,0 +1,15 @@
+- How long did you spend working on this project?
+
+Around 2 hours.
+
+- What was the most rewarding challenge you conquered?
+
+I was figuring out how to find in an array, tried bsearch, but seems like not working as expected. Tried select first then return first. Also found `find` on stackoverflow, but it's not documented in Array, it's in Modules: Enumerable. Not sure what's Modules in Ruby?
+
+- What two additional features did you build? Why?
+
+I added find by customer and by product.
+
+- Where do you still have room to grow?
+
+I need to learn more about Ruby idiomatic way to write code.

@@ -28,12 +28,12 @@ class Transaction
 
 	# Finds all Transactions by the customer involved
   def self.find_by_customer(customer)
-    @@transactions.select {|trans| trans.customer.name == customer.name}
+    @@transactions.select {|transaction| transaction.customer.name == customer.name}
   end
 
   # Finds all Transactions by product involved
   def self.find_by_product(product)
-    @@transactions.select {|trans| trans.product.title == product.title}
+    @@transactions.select {|transaction| transaction.product.title == product.title}
   end
 
 end
