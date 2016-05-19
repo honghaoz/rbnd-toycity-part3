@@ -9,6 +9,10 @@ I was figuring out how to find in an array, tried bsearch, but seems like not wo
 - What two additional features did you build? Why?
 
 I added find by customer and by product.
+I added prints all transactions.
+
+I this those methods are useful in real life.
+
 
 - Where do you still have room to grow?
 

@@ -36,4 +36,11 @@ class Transaction
     @@transactions.select {|transaction| transaction.product.title == product.title}
   end
 
+  # Prints all transactions
+  def self.print_all_transactions
+  	puts @@transactions.inject("Transactions: \n") { |result, transaction| 
+  		result += "#{transaction.id} \t#{transaction.product.title}\t#{transaction.customer.name}\n"
+  	}
+  end
+
 end
