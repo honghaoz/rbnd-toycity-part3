@@ -1,3 +1,4 @@
+# noinspection RubyClassVariableUsageInspection
 class Transaction
 
 	@@id = 0
@@ -8,7 +9,8 @@ class Transaction
 	def initialize(customer, product)
 		@customer = customer
 		@product = product
-		product.stock -= 1
+
+		product.decrease_stock_by(1)
 		@id = @@id + 1
 		@@id += 1
 
@@ -23,7 +25,7 @@ class Transaction
 
 	# Finds and returns transaction by number
 	def self.find(id)
-		@@transactions.find { |t| t.id == id }
+		@@transactions.find { |transaction| transaction.id == id }
 	end
 
 	# Finds all Transactions by the customer involved
@@ -38,8 +40,8 @@ class Transaction
 
   # Prints all transactions
   def self.print_all_transactions
-  	puts @@transactions.inject("Transactions: \n") { |result, transaction| 
-  		result += "#{transaction.id} \t#{transaction.product.title}\t#{transaction.customer.name}\n"
+  	puts @@transactions.inject("Transactions: \n") { |result, transaction|
+			result + "#{transaction.id} \t#{transaction.product.title}\t#{transaction.customer.name}\n"
   	}
   end
 

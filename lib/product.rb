@@ -1,6 +1,7 @@
+# noinspection RubyClassVariableUsageInspection
 class Product
-	attr_reader :title
-	attr_accessor :price, :stock
+	attr_reader :title, :stock
+	attr_accessor :price
 
 	@@products = []
 
@@ -11,6 +12,18 @@ class Product
 		add_to_products
 	end
 
+	def decrease_stock_by(number_to_decrease)
+    if number_to_decrease > stock
+      raise OutOfStockError, "#{@title} is out of stock."
+    end
+
+    @stock -= number_to_decrease
+  end
+
+  def increase_stock_by(number_to_increase)
+    @stock += number_to_increase
+  end
+
 	# Returns array of all products
 	def self.all
     @@products
@@ -18,7 +31,7 @@ class Product
 
   # find product by title
   def self.find_by_title(title)
-  	@@products.bsearch {|prod| prod.title == title}
+  	@@products.find {|prod| prod.title == title}
   end
 
   # if this product is in-stock
@@ -28,7 +41,7 @@ class Product
 
   # Return products in stock
   def self.in_stock
-  	@@products.select { |product| product.stock > 0 }
+  	@@products.select { |product| product.in_stock? }
   end
 
   private

@@ -1,3 +1,4 @@
+# noinspection RubyClassVariableUsageInspection
 class Customer
 	attr_reader :name
 
@@ -15,17 +16,11 @@ class Customer
 
 	# find customer by name
 	def self.find_by_name(name)
-		@@customers.select { |customer| customer.name == name }.first
-		# Q: why this fails to find?
-		# @@customers.bsearch { |customer| customer.name == name }
+		@@customers.find { |customer| customer.name == name }
 	end
 
 	def purchase(product)
-		if product.in_stock?
-			Transaction.new(self, product)
-		else
-			raise OutOfStockError, "#{product.title} is out of stock."
-		end
+		Transaction.new(self, product)
 	end
 
 	private 
